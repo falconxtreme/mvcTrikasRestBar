@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+	div.container
+		h1.
+			#{title}
+		form#formAddRol(name="addrol",method="post",action="/rol")
+			p Id Rol: 
+				input#txtIdRol(type="text", placeholder="ex. ROL0001", name="idRol")
+			p Descripción:
+				input#txtDesRol(type="text", placeholder="ex. Administrador", name="desRol")
+			p Activo?: 
+				input#chkActivo(type="checkbox", name="esActivo")
+			p
+				button#btnSubmit(type="submit") Guardar

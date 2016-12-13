@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  section(id="carrito-container")
+    div.container
+      div.row
+        div.col-xs-12.col-md-9
+          div.list-group
+            div.list-group-item.list-group-item-action.active
+              h5.list-group-heading Productos
+            div#carritoProds.list-group-item.list-group-item-action
+              
+        div#divTotalAPagar.col-xs-12.col-md-3
+          div.list-group
+            div.list-group-item.list-group-item-action.list-group-item-success
+              h5.list-group-heading Total a Pagar
+            div.list-group-item.list-group-item-action
+              h2#hTotalPagar S/. 0.00
+          div.text-center
+            a(href="#", class="btn btn-danger", id="aPedir") Realizar pedido
+              i.fa.fa-shopping-cart
+
+  script(type="text/javascript", src="/js/carrito.js")

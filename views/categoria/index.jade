@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+	div.container
+		h1.
+			#{title}
+		form#frmAddCategory(name="addcategory",method="post",action="/categoria")
+			div.form-group.row
+				div.offset-sm-2.col-sm-10
+					button#btnNuevaCategoria(type="button", class="btn btn-primary noDisplay") Nuevo
+			div.form-group.row
+				label(for="txtIdCategoria", class="col-sm-2 col-form-label") Id Categoria
+				div.col-sm-10
+					input#txtIdCategoria(type="text",class="form-control", placeholder="ex. CAT0001", name="idCategoria")
+					input#txtId(type="hidden", name="id")
+			div.form-group.row
+				label(for="txtDesCategoria", class="col-sm-2 col-form-label") Descripción
+				div.col-sm-10
+					input#txtDesCategoria(type="text",class="form-control", placeholder="ex. Sopas", name="desCategoria")
+			div.form-group.row
+				label(for="chkActivo", class="col-sm-2 col-form-label") Activo?
+				div.col-sm-10
+					input#chkActivo(type="checkbox", name="esActivo")
+			div.form-group.row
+				div.offset-sm-2.col-sm-10
+					button#btnGuardarCategoria(type="submit", class="btn btn-primary") Agregar
+					button#btnActualizarCategoria(type="button", class="btn btn-primary noDisplay") Actualizar
+					div(id="msjValidacion")
+
+	div#divCategorias.container
+		if categorias
+			div.list-group
+				div.list-group-item.list-group-item-action.active
+					h5.list-group-heading Categorías
+				div#detCategorias.list-group-item.list-group-item-action
+					div(id="msjValidacionGen")
+					- each cat, i in categorias
+						div.row.rowCategoria
+							div.col-xs-12.col-md-2
+								= cat.idCategoria
+							div.col-xs-12.col-md-5
+								= cat.desCategoria
+							div.col-xs-12.col-md-2
+								input(type="checkbox", checked='#{cat.esActivo}')
+							div.col-xs-12.col-md-3
+								button.btn.btn-trikas(onclick="editarCategoria('#{cat._id}', '#{cat.idCategoria}' , '#{cat.desCategoria}' , '#{cat.esActivo}')")
+									i.fa.fa-pencil
+								&nbsp;
+								button.btn.btn-trikas(onclick="eliminarCategoria('#{cat._id}', this)")
+									i.fa.fa-trash
+
+	script(type="text/javascript", src="/js/general.js")
+	script(type="text/javascript", src="/js/categoria.js")

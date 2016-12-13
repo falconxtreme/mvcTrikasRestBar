@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  - var nProds = productos.length
+  if productos
+    div(id="carousel-container")
+      div(id="productosCarousel", class="carousel slide", data-ride="carousel")
+        ol.carousel-indicators
+          - for (var x=0; x<nProds; x++)
+            if x==0
+              li(data-target="#productosCarousel", data-slide-to="#{x}", class="active")
+            else
+              li(data-target="#productosCarousel", data-slide-to="#{x}")
+        div(class="carousel-inner", role="listbox")
+          - each pro, index in productos
+            if index==0
+              div.carousel-item.active
+                img(src='#{pro.urlImagen}', alt='#{pro.idProducto}')
+                div.carousel-caption
+                  h3 #{pro.idProducto}
+                  p.hidden-sm-down #{pro.desProducto}
+                  div.input-group.btn-carousel-trikas
+                    span.input-group-addon S/. #{pro.precioUnitario}
+                    span.input-group-btn
+                      button(class="btn btn-primary", type="button", onclick="agregarACarrito(this, '#{pro._id}', '#{pro.idProducto}', '#{pro.desProducto}', '#{pro.precioUnitario}', '#{pro.urlImagen}')") Agregar
+                    
+            else
+              div.carousel-item
+                img(src='#{pro.urlImagen}', alt='#{pro.idProducto}')
+                div.carousel-caption
+                  h3 #{pro.idProducto}
+                  p.hidden-sm-down #{pro.desProducto}
+                  div.input-group.btn-carousel-trikas
+                    span.input-group-addon S/. #{pro.precioUnitario}
+                    span.input-group-btn
+                      button(class="btn btn-primary", type="button", onclick="agregarACarrito(this, '#{pro._id}', '#{pro.idProducto}', '#{pro.desProducto}', '#{pro.precioUnitario}', '#{pro.urlImagen}')") Agregar
+          
+        a(class="left carousel-control", href="#productosCarousel", role="button", data-slide="prev")
+          span(class="icon-prev", aria-hidden="true")
+          span.sr-only Producto anterior
+        a(class="right carousel-control", href="#productosCarousel", role="button", data-slide="next")
+          span(class="icon-next", aria-hidden="true")
+          span.sr-only Producto siguiente
+

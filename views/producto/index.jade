@@ -1,0 +1,98 @@
+extends ../layout
+
+block content
+	div.container
+		h1.
+			#{title}
+		form#frmAddProduct(name="addproduct",method="post",action="/producto")
+			div.form-group.row
+				div.offset-sm-2.col-sm-10
+					button#btnNuevoProducto(type="button", class="btn btn-primary noDisplay") Nuevo
+			div.form-group.row
+				label(for="txtIdProducto", class="col-sm-2 col-form-label") Id Producto
+				div.col-sm-10
+					input#txtIdProducto(type="text",class="form-control", placeholder="ex. PRO0001", name="idProducto")
+					input#txtId(type="hidden", name="id")
+			div.form-group.row
+				label(for="txtDesProducto", class="col-sm-2 col-form-label") Descripción
+				div.col-sm-10
+					input#txtDesProducto(type="text",class="form-control", placeholder="ex. Ceviche", name="desProducto")
+			div.form-group.row
+				label(for="txtCostoUnitario", class="col-sm-2 col-form-label") Costo Unitario
+				div.col-sm-10
+					input#txtCostoUnitario(type="text",class="form-control", placeholder="ex. 15", name="costoUnitario")
+			div.form-group.row
+				label(for="txtStock", class="col-sm-2 col-form-label") Stock
+				div.col-sm-10
+					input#txtStock(type="text",class="form-control", placeholder="ex. 15", name="stock")
+			div.form-group.row
+				label(for="txtPrecioUnitario", class="col-sm-2 col-form-label") Precio Unitario
+				div.col-sm-10
+					input#txtPrecioUnitario(type="text",class="form-control", placeholder="ex. 15", name="precioUnitario")
+			div.form-group.row
+				label(for="txtUrlImagen", class="col-sm-2 col-form-label") Url Imagen
+				div.col-sm-10
+					input#txtUrlImagen(type="text",class="form-control", placeholder="ex. 15", name="urlImagen")
+			div.form-group.row
+				label(for="ddlCategoria", class="col-sm-2 col-form-label") Categoría
+				div.col-sm-10
+					if categorias
+						select#ddlCategoria.form-control
+							- each cat, i in categorias
+								option(value='#{cat._id}') #{cat.desCategoria}
+			div.form-group.row
+				label(for="chkCarrusel", class="col-sm-2 col-form-label") Se verá en carrusel?
+				div.col-sm-10
+					input#chkCarrusel(type="checkbox", name="esCarrusel", checked="true")
+			div.form-group.row
+				label(for="chkSolicitar", class="col-sm-2 col-form-label") Será producto?
+				div.col-sm-10
+					input#chkSolicitar(type="checkbox", name="seSolicita", checked="true")
+			div.form-group.row
+				label(for="chkActivo", class="col-sm-2 col-form-label") Activo?
+				div.col-sm-10
+					input#chkActivo(type="checkbox", name="esActivo", checked="true")
+			div.form-group.row
+				div.offset-sm-2.col-sm-10
+					button#btnGuardarProducto(type="submit", class="btn btn-primary") Agregar
+					button#btnActualizarProducto(type="button", class="btn btn-primary noDisplay") Actualizar
+					div(id="msjValidacion")
+
+	div#divProductos.container
+		if productos
+			div.list-group
+				div.list-group-item.list-group-item-action.active
+					h5.list-group-heading Productos
+				div#detProductos.list-group-item.list-group-item-action
+					div(id="msjValidacionGen")
+					- each pro, i in productos
+						div.row.rowProducto
+							div.col-xs-12.col-md-1.col-lg-1
+								= pro.idProducto
+							div.col-xs-12.col-md-3.col-lg-2
+								= pro.desProducto
+							div.col-xs-12.col-md-1.col-lg-1 c.u. 
+								= pro.costoUnitario
+							div.col-xs-12.col-md-1.col-lg-1 st. 
+								= pro.stock
+							div.col-xs-12.col-md-1.col-lg-1 p.u. 
+								= pro.precioUnitario
+							div.col-xs-12.col-md-3.col-lg-3
+								= pro.urlImagen
+							div.col-xs-12.col-md-3.col-lg-1
+								= pro.categoria.desCategoria
+							div.col-xs-12.col-md-1.col-lg-1
+								input(type="checkbox", checked='#{pro.esCarrusel}')
+								&nbsp;
+								input(type="checkbox", checked='#{pro.seSolicita}')
+								&nbsp;
+								input(type="checkbox", checked='#{pro.esActivo}')
+							div.col-xs-12.col-md-3.col-lg-1
+								button.btn.btn-trikas(onclick="editarProducto('#{pro._id}', '#{pro.idProducto}' , '#{pro.desProducto}' , '#{pro.costoUnitario}' , '#{pro.stock}' , '#{pro.precioUnitario}' , '#{pro.urlImagen}' , '#{pro.categoria._id}' , '#{pro.esCarrusel}' , '#{pro.seSolicita}' , '#{pro.esActivo}')")
+									i.fa.fa-pencil
+								&nbsp;
+								button.btn.btn-trikas(onclick="eliminarProducto('#{pro._id}', this)")
+									i.fa.fa-trash
+
+	script(type="text/javascript", src="/js/general.js")
+	script(type="text/javascript", src="/js/producto.js")

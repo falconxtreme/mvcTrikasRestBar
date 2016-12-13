@@ -1,0 +1,19 @@
+{
+  // Customer module configs 
+  "trikasapp": {
+    "dbConfig": {
+      "host": "localhost",
+      "port": 27017,
+      "dbName": "trikasbd",
+      "userdb": "",
+      "passdb": ""
+    },
+    "parameters": {
+      "appHost": "http://localhost:3000/"
+    },
+    "correo":{
+      "empresa": "Trikas Restaurante Bar",
+      "imgEmpresa": "https://radiant-earth-93894.herokuapp.com/images/trikas_rest.jpg"
+    }
+  }
+}

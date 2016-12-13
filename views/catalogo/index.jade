@@ -1,0 +1,46 @@
+extends ../layout
+
+block content
+  section(id="breadcrumbs-container")
+    div.container
+      div.row
+        div.col-xs
+          nav.breadcrumb
+            a(href="/", class="breadcrumb-item") Trikas
+            a(href="/catalogo" class="breadcrumb-item") Catálogo
+            span.breadcrumb-item.active Todos los productos
+
+  section(id="productos-container")
+    div.container
+      div.row
+        div.col-xs-12.col-md-3
+          div.list-group.filtros-toggle
+            a(href="#", id="filtrosToggle", class="list-group-item list-group-item-action navbar-toggler hidden-sm-up", data-target="#filtros-container", data-toggle="collapse")
+              h5.list-group-item-heading Filtros
+                i.fa.fa-chevron-down
+          div(id="filtros-container", class="collapse navbar-toggleable-xs")
+            div.list-group
+              a(class="list-group-item list-group-item-action active", href="#")
+                h5.list-group-heading Comidas
+              if categorias
+                - each cat, index in categorias
+                  a(class="list-group-item list-group-item-action", href="#", onclick="productosCategoria('#{cat._id}')") #{cat.desCategoria}
+
+        div.col-xs-12.col-md-9.lista-productos
+          div#divProdsCatalogo.row
+            if productos
+              - each pro, index in productos
+                div.col-xs-12.col-md-6.col-lg-4
+                  div.card
+                    img(src='#{pro.urlImagen}', alt='#{pro.idProducto}', class="card-img-top img-fluid")
+                    div.card-block
+                      h4.card-title #{pro.idProducto}
+                      p.card-text #{pro.desProducto}
+                      div.input-group
+                        span.input-group-addon S/. #{pro.precioUnitario}
+                        input(type="text", class="form-control", aria-label="Cantidad", value="1")
+                        span.input-group-btn
+                          button(class="btn btn-primary", type="button", onclick="agregarACarrito(this, '#{pro._id}', '#{pro.idProducto}', '#{pro.desProducto}', '#{pro.precioUnitario}', '#{pro.urlImagen}')") Agregar
+
+  script(type="text/javascript", src="/js/catalogo.js")
+              
