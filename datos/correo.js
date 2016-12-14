@@ -15,7 +15,7 @@ function crearMensajeDeActivacion(codCuenta, correoAActivar, pass){
 	var appHost = config.get('trikasapp.parameters.appHost');
 	var nomEmpresa = config.get('trikasapp.correo.empresa');
 	var imgEmpresa = config.get('trikasapp.correo.imgEmpresa');
-	var msj = '<img src="' + imgEmpresa + '" alt="' + nomEmpresa + '" width="42" height="42"> ' +
+	var msj = '<img src="' + imgEmpresa + '" alt="' + nomEmpresa + '" width="150" height="50"> ' +
 		'<b>✔ Estimado usuario(a)</b> para poder activar tu cuenta favor de copiar el siguiente link <b>' + 
 		appHost + 'activar/activar?q=' + codCuenta + '</b>' +
 		' y pegarlo en la barra de direcciones de tu navegador.<br /><br />' + 
