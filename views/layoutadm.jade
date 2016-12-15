@@ -29,35 +29,19 @@ html
           div.row
             div.col-xs-10.offset-xs-1.col-md-4.offset-md-0
               ul.nav.navbar-nav
-                li(class='nav-item text-xs-center #{home}')
-                  a(class="nav-link", href="/") Home
-                li(class='nav-item text-xs-center #{catalogo}')
-                  a(class="nav-link", href="/catalogo") Catálogo
-                li(class='nav-item text-xs-center #{carrito}')
-                  a(class="nav-link", href="/carrito") Carrito
-                li(class='nav-item text-xs-center')
-                  a(id="aLimpiarCarrito", class="nav-link", href="#") Limpiar Carrito
+                li(class='nav-item text-xs-center #{pedido}')
+                  a(class="nav-link", href="/") Pedido
+                li(class='nav-item text-xs-center #{categoria}')
+                  a(class="nav-link", href="/categoria") Categoria
+                li(class='nav-item text-xs-center #{producto}')
+                  a(class="nav-link", href="/producto") Producto
+                li(class='nav-item text-xs-center #{rol}')
+                  a(class="nav-link", href="/rol") Rol
+                li(class='nav-item text-xs-center #{usuario}')
+                  a(class="nav-link", href="/usuario") Usuario
                 li(class='nav-item hidden-sm-up text-xs-center #{login}')
                   a(id="aCerrarSesMe", class="nav-link", href="#") Cerrar Sesión
                   a(id="aLoginMe", class="nav-link", href="#", data-toggle="modal" data-target="#loginMod") Login
-            div.col-xs-12.col-md-6.offset-md-2.hidden-xs-down
-              form
-                div.input-group
-                  input(class="form-control", type="text", placeholder="Encontró lo que buscaba?")
-                  span.input-group-btn
-                    button.btn.btn-trikas
-                      span.hidden-sm-down Buscar
-                      i.fa.fa-search.hidden-md-up
-      div(id='search-bar', class='container hidden-sm-up')
-        div.row
-          div.col-xs
-            form
-              div.input-group
-                input#txtBusProducto(class='form-control', type='text', placeholder='¿Encontró lo que buscaba?')
-                span.input-group-btn
-                  button.btn.btn-trikas(onclick="productosBusqueda()")
-                    span.hidden-sm-down Buscar
-                    i.fa.fa-search.hidden-md-up
 
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js", integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY", crossorigin="anonymous")
     script(type="text/javascript", src="/js/general.js")
@@ -68,27 +52,21 @@ html
       div.container
         div.row.text-xs-center.text-md-left
           div.col-md-4.noDisplay
-            form(id="suscribirForm", action="#", method="POST")
-              h4.text-uppercase ¿Quieres recibir todas las novedades?
-              div.form-group
-                input(type="email", class="form-control", id="email", name="email", placeholder="tu@correo.com")
-                small.form-text.text-muted No compartiremos tu información con nadie más
-              button(type="submit", class="btn btn-primary form-text") Suscribirme
           div.col-md-3.offset-md-5
             h4 Navegación
             ul.nav
               li.nav-item
-                a(class="nav-link", href="/") Home
+                a(class="nav-link", href="/") Pedido
               li.nav-item
-                a(class="nav-link", href="/catalogo") Catálogo
+                a(class="nav-link", href="/categoria") Categoria
               li.nav-item
-                a(class="nav-link", href="/carrito") Carrito
+                a(class="nav-link", href="/producto") Producto
+              li.nav-item
+                a(class="nav-link", href="/rol") Rol
+              li.nav-item
+                a(class="nav-link", href="/usuario") Usuario
               li#liLoginFo.nav-item
                 a(class="nav-link", href="#", data-toggle="modal" data-target="#loginMod") Login
-              li.nav-item.noDisplay
-                a(class="nav-link", href="/faq") FAQ
-              li.nav-item.noDisplay
-                a(class="nav-link", href="/contacto") Contacto
 
     div(class="modal fade", id="loginMod", tabindex="-1", role="dialog" aria-labelledby="Login", aria-hidden="true")
       div.modal-dialog
