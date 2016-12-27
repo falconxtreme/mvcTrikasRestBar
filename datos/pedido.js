@@ -1,4 +1,5 @@
 var pedidoModel = require('../model/pedido'); //modelo mongoose de producto
+var usuarioModel = require('../model/usuario'); //modelo mongoose de categoria
 
 var mongoose = require('mongoose'); //mongo connection
 
@@ -12,7 +13,15 @@ daPedido.getPedidos = function (fnIn){
 			fnIn(err, null);
 		}else{
 			if(pedidos){
-				fnIn(null, pedidos);
+				usuarioModel.populate(pedidos,{path: "usuarioMod"}, function (err, pedidos) {
+					if (err) {
+						console.error(err);
+						fnIn(err, null);
+					} else {
+						console.log(pedidos);
+						fnIn(null, pedidos);
+					}	
+				});
 			}else{
 				fnIn("No existen pedidos", null);
 			}

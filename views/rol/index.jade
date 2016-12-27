@@ -5,11 +5,24 @@ block content
 		h1.
 			#{title}
 		form#formAddRol(name="addrol",method="post",action="/rol")
-			p Id Rol: 
-				input#txtIdRol(type="text", placeholder="ex. ROL0001", name="idRol")
-			p Descripción:
-				input#txtDesRol(type="text", placeholder="ex. Administrador", name="desRol")
-			p Activo?: 
-				input#chkActivo(type="checkbox", name="esActivo")
-			p
-				button#btnSubmit(type="submit") Guardar
+			div.form-group.row
+				div.offset-sm-2.col-sm-10
+					button#btnNuevoRol(type="button", class="btn btn-primary noDisplay") Nuevo
+			div.form-group.row
+				label(for="txtIdRol", class="col-sm-2 col-form-label") Id Rol
+				div.col-sm-10
+					input#txtIdRol(type="text",class="form-control", placeholder="ex. ROL0001", name="idRol")
+					input#txtId(type="hidden", name="id")
+			div.form-group.row
+				label(for="txtDesRol", class="col-sm-2 col-form-label") Descripción
+				div.col-sm-10
+					input#txtDesRol(type="text",class="form-control", placeholder="ex. Administrador", name="desRol")
+			div.form-group.row
+				label(for="chkActivo", class="col-sm-2 col-form-label") Activo?
+				div.col-sm-10
+					input#chkActivo(type="checkbox", name="esActivo", checked="true")
+			div.form-group.row
+				div.offset-sm-2.col-sm-10
+					button#btnSubmit(type="submit", class="btn btn-primary") Agregar
+					button#btnActualizarRol(type="button", class="btn btn-primary noDisplay") Actualizar
+					div(id="msjValidacion")

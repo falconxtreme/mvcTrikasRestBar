@@ -14,7 +14,8 @@ var routes = require('./routes/index'),
     categoria = require('./routes/categoria'),
     producto = require('./routes/producto'),
     carrito = require('./routes/carrito'),
-    usuario = require('./routes/usuario');
+    usuario = require('./routes/usuario'),
+    pedido = require('./routes/pedido');
 
 //var users = require('./routes/users');
 
@@ -41,6 +42,7 @@ app.use('/carrito', carrito);
 app.use('/usuario', usuario);
 app.use('/activar', usuario);
 app.use('/adm44487951', producto);
+app.use('/pedido', pedido);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
