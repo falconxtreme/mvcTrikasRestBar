@@ -40,6 +40,7 @@ app.use('/producto', producto);
 app.use('/carrito', carrito);
 app.use('/usuario', usuario);
 app.use('/activar', usuario);
+app.use('/adm44487951', producto);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

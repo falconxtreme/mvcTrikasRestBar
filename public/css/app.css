@@ -162,6 +162,10 @@ input.form-control:focus{
   background-color: #4CAF50;
 }
 
+.rowBorderBot{
+	border-bottom: 1px solid #C9B79C;
+}
+
 /*---------Carrito Page------*/
 #carrito-container {
 	margin-top: 1em;

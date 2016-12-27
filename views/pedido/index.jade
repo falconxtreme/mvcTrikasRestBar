@@ -1,0 +1,35 @@
+extends ../layoutadm
+
+block content
+	div.container
+		h1.
+			#{title}
+
+	div#divPedidos.container
+		if pedidos
+			div.list-group
+				div.list-group-item.list-group-item-action.active
+					h5.list-group-heading Pedidos
+				div#detPedidos.list-group-item.list-group-item-action
+					div(id="msjValidacionGen")
+					- each ped, i in pedidos
+						div.row.rowBorderBot
+							div.col-xs-12.col-md-2
+								= ped.idPedido
+							div.col-xs-12.col-md-2
+								= ped.estado
+							div.col-xs-12.col-md-2
+								= ped.precioTotalCIGV
+							div.col-xs-12.col-md-2
+								= ped.fecModificacion
+							div.col-xs-12.col-md-2
+								= ped.usuario.correo
+							div.col-xs-12.col-md-3
+								button.btn.btn-trikas(onclick="atenderPedido('#{ped._id}')")
+									i.fa.fa-pencil
+								&nbsp;
+								button.btn.btn-trikas(onclick="anularPedido('#{ped._id}')")
+									i.fa.fa-trash
+
+	script(type="text/javascript", src="/js/general.js")
+	script(type="text/javascript", src="/js/pedido.js")
